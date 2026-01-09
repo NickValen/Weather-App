@@ -1,4 +1,4 @@
-const headerUploadBtn = document.getElementById('header-upload-btn')
+// const headerUploadBtn = document.getElementById('header-upload-btn')
 
 
 
@@ -6,4 +6,4 @@ const headerUploadBtn = document.getElementById('header-upload-btn')
 
 
 
-headerUploadBtn.addEventListener('click', getWeather)
+// headerUploadBtn.addEventListener('click', getWeather)

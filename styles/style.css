@@ -141,3 +141,28 @@ article > * + * {
 
 /* Start of styles */
 
+main {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .weather-card {
+      width: 260px;
+      padding: 16px;
+      border-radius: 12px;
+      background: #1e293b;
+      color: #fff;
+      font-family: sans-serif;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .weather-card h2 {
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+
+    .weather-item {
+      margin: 6px 0;
+      font-size: 14px;
+    }
