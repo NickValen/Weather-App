@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         card.innerHTML = `
             <h2>Погода</h2>
+            <h3>Город: ${city}</h3>
             <div>📅 Время: ${dateFormatted}</div>
             <div>🌡️ Температура: ${temperature} °C</div>
             <div>🌧️ Осадки: ${rain} мм</div>
