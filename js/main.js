@@ -1,10 +1,12 @@
 // Ждем загрузки DOM, чтобы не было ошибки "reading addEventListener"
+const main = document.getElementById("main");
+
 document.addEventListener('DOMContentLoaded', () => {
     
     const latInput = document.querySelector('.lat');
     const lonInput = document.querySelector('.lon');
     const main = document.querySelector('.main');
-    const button = document.querySelector('.getWeatherBtn');
+    const button = document.querySelector('.getWeatherBtn1');
 
     // Проверка: нашли ли мы кнопку?
     if (!button) {
@@ -25,7 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
             latitude: lat,
             longitude: lon,
             hourly: "temperature_2m,rain",
-            timezone: "auto"
+            timezone: "auto",
+            city: "city"
         });
 
         const url = `https://api.open-meteo.com/v1/forecast?${params}`;
@@ -50,21 +53,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderWeatherCard(time, temperature, rain) {
-        main.innerHTML = "";
-        const card = document.createElement("div");
-        card.className = "weather-card";
+  const main = document.getElementById("main");
 
-        const dateFormatted = new Date(time).toLocaleString();
+  if (!main) {
+    console.error("❌ Элемент #main не найден");
+    return;
+  }
 
-        card.innerHTML = `
-            <h2>Погода</h2>
-            <h3>Город: ${city}</h3>
-            <div>📅 Время: ${dateFormatted}</div>
-            <div>🌡️ Температура: ${temperature} °C</div>
-            <div>🌧️ Осадки: ${rain} мм</div>
-        `;
-        main.appendChild(card);
-    }
+  main.innerHTML = "";
+
+  const card = document.createElement("div");
+  card.className = "weather-card";
+
+  const dateFormatted = new Date(time).toLocaleString();
+
+  card.innerHTML = `
+    <h2>🌤 Погода</h2>
+    <div>📅 Время: ${dateFormatted}</div>
+    <div>🌡 Температура: ${temperature} °C</div>
+    <div>🌧 Осадки: ${rain} мм</div>
+  `;
+
+  main.appendChild(card);
+}
+
 
     button.addEventListener('click', getWeather);
 });

@@ -1,168 +1,131 @@
-/* Указываем box sizing */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-/* Убираем внутренние отступы */
-ul[class],
-ol[class] {
-  padding: 0;
-}
-
-/* Убираем внешние отступы */
-body,
-h1,
-h2,
-h3,
-h4,
-p,
-ul[class],
-ol[class],
-li,
-figure,
-figcaption,
-blockquote,
-dl,
-dd {
-  margin: 0;
-}
-
-/* Выставляем основные настройки по-умолчанию для body */
+/* 1. Общие настройки страницы */
 body {
-  min-height: 100vh;
-  scroll-behavior: smooth;
-  text-rendering: optimizeSpeed;
-  line-height: 1.5;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
 }
 
-/* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
-ul[class],
-ol[class] {
-  list-style: none;
+/* 2. Основная карточка */
+#main {
+    background: linear-gradient(180deg, #8E54E9 0%, #4776E6 100%);
+    width: 400px;
+    padding: 35px;
+    border-radius: 30px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    color: white;
+    text-align: center;
+    box-sizing: border-box;
 }
 
-/* Элементы a, у которых нет класса, сбрасываем до дефолтных стилей */
-a:not([class]) {
-  text-decoration-skip-ink: auto;
+/* 3. Верхний блок (Инпуты координат + кнопка) */
+#main p {
+    display: flex;
+    gap: 10px;
+    margin: 0 0 20px 0;
 }
 
-/* Упрощаем работу с изображениями */
-img {
-  max-width: 100%;
-  display: block;
+.lat, .lon {
+    flex: 1;
+    min-width: 0;
+    height: 45px;
+    background: white;
+    border: none;
+    border-radius: 25px;
+    padding: 0 15px;
+    color: #333;
+    outline: none;
 }
 
-/* Указываем понятную периодичность в потоке данных у article*/
-article > * + * {
-  margin-top: 1em;
+.getWeatherBtn1 {
+    flex: 1.5;
+    height: 45px;
+    background: white;
+    color: #4776E6;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 11px;
+    cursor: pointer;
+    text-transform: uppercase;
 }
 
-/* Наследуем шрифты для инпутов и кнопок */
-input,
-button,
-textarea,
-select {
-  font: inherit;
+/* 4. Поле ввода города */
+#cityInput {
+    width: 100%;
+    height: 50px;
+    background: white;
+    border: none;
+    border-radius: 25px;
+    padding: 0 20px;
+    margin-bottom: 20px;
+    color: #333;
+    outline: none;
+    box-sizing: border-box;
 }
 
-/* Удаляем все анимации и переходы для людей, которые предпочитай их не использовать */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+/* 5. ИСПРАВЛЕНИЕ ВЫПАДАЮЩЕГО СПИСКА (Choices.js) */
+.choices {
+    margin-bottom: 20px;
 }
 
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+/* Верхняя часть (само поле) */
+.choices__inner {
+    background: white !important;
+    border-radius: 25px !important;
+    border: none !important;
+    min-height: 50px !important;
+    color: #333 !important;
+    padding: 5px 15px !important;
 }
 
-/* Убираем внутренние отступы */
-ul[class],
-ol[class] {
-  padding: 0;
+/* Выпадающее меню — делаем его полукруглым */
+.choices__list--dropdown {
+    border-radius: 25px !important; /* Скругление всего списка */
+    margin-top: 10px !important;
+    border: none !important;
+    overflow: hidden !important; /* Чтобы элементы внутри не вылезали за углы */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
-/* Убираем внешние отступы */
-body,
-h1,
-h2,
-h3,
-h4,
-p,
-ul[class],
-ol[class],
-li,
-figure,
-figcaption,
-blockquote,
-dl,
-dd {
-  margin: 0;
+/* Текст в списке */
+.choices__list--dropdown .choices__item--selectable {
+    color: #333 !important;
+    text-align: left;
+    padding: 12px 20px !important;
 }
 
-body {
-  min-height: 100vh;
-  scroll-behavior: smooth;
-  text-rendering: optimizeSpeed;
-  line-height: 1.5;
+/* Цвет при наведении на пункт списка */
+.choices__list--dropdown .choices__item--selectable.is-highlighted {
+    background-color: #f0f0f0 !important;
 }
 
-ul[class],
-ol[class] {
-  list-style: none;
+/* 6. Главная кнопка */
+#getWeatherBtn {
+    width: 100%;
+    height: 55px;
+    background: white;
+    color: #4776E6;
+    border: none;
+    border-radius: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-a:not([class]) {
-  text-decoration-skip-ink: auto;
+#getWeatherBtn:hover {
+    background: #f8f8f8;
+    transform: scale(1.02);
 }
 
-img {
-  max-width: 100%;
-  display: block;
+/* Убираем стрелочки у чисел */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
-article > * + * {
-  margin-top: 1em;
-}
-
-
-
-
-
-
-
-/* Start of styles */
-
-main {
-      margin-top: 20px;
-      display: flex;
-      justify-content: center;
-    }
-
-    .weather-card {
-      width: 260px;
-      padding: 16px;
-      border-radius: 12px;
-      background: #1e293b;
-      color: #fff;
-      font-family: sans-serif;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    }
-
-    .weather-card h2 {
-      margin: 0 0 10px;
-      font-size: 18px;
-    }
-
-    .weather-item {
-      margin: 6px 0;
-      font-size: 14px;
-    }

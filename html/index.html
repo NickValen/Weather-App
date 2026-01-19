@@ -1,20 +1,31 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+  <link rel="stylesheet" href="/styles/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
   <meta charset="UTF-8" />
   <title>Погода</title>
 </head>
 <body>
-  <main class="main">
+  <main id="main">
+
     <p>
-      <input type="number" class="lat">
-      <input type="number" class="lon">
-      <button class="getWeatherBtn">Показать погоду</button>
+      <input placeholder="longitude" type="number" class="lat">
+      <input placeholder="latitude" type="number" class="lon">
+      <button class="getWeatherBtn1">Показать погоду</button>
     </p>
+    
+    <input id="cityInput" placeholder="Введите город (минимум 3 буквы)" />
+      <select id="citySelect"></select>
+
+      <button id="getWeatherBtn">Показать погоду</button>
+
+
   </main class="main">
-  
 
-
+  <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
   <script src="/js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+  <script src="/js/script.js"></script>
 </body>
 </html>
